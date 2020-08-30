@@ -12,13 +12,13 @@ headless: true
 # Order that this section appears on the page.
 weight: 15
 
-title: Demos
+title: Welcome
 subtitle:
 
 design:
   columns: "1"
   background:
-    image: headers/bubbles-wide.jpg
+    image: headers/profile.jpg
     image_darken: 0.6
     image_parallax: true
     image_position: center
@@ -28,7 +28,9 @@ design:
     padding: ["20px", "0", "20px", "0"]
 ---
 
-Welcome to the demo of the **resumé template** for Academic.
+Welcome to my personal website. This is my first time creating a website for a professional standout. When I first heard a demo given by Yuhui Xue on one of Rstudio's many conferences, I got to know about the use of Hugo + Blogdown, I really wanted one of mine, So here we go. 
+
+Plus in this era of 2020, who even exists if they don't have a website, right?
 
 [View more templates](https://sourcethemes.com/academic/templates/) for Academic.
 
@@ -37,7 +39,7 @@ Welcome to the demo of the **resumé template** for Academic.
 **[Join](https://sourcethemes.com/academic/docs/install/) the Most Empowered Hugo Community**
 
 {{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
+I am still a novice with this, let's work it!!! 
 
-Backgrounds can be applied to any section. Here, the *background* option is set give an *image parallax* effect.
+**Cheers**
 {{% /alert %}}
