@@ -23,13 +23,13 @@ social:
   link: /#contact
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/uv_varsha
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/Varsha-Ujjinni-VijayKumar
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.com/in/varsha-ujjinni-vijay-kumar-1026121a4/
 superuser: true
 title: Varsha Ujjinni Vijay Kumar
 user_groups:

@@ -1,0 +1,13 @@
+---
+title: "Covid 19 cases analysis in India"
+author: "Varsha Ujjinni Vijay Kumar"
+date: 2015-07-23T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+trying if this post appears.
