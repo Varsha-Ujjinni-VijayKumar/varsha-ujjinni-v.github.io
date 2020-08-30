@@ -1,25 +1,22 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: A Business Analytics student trying to get data and work with it and learn.
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: Master's in Business Analytics
+    institution: Monash University
+    year: 2020-2021
+  - course: Bachelor's in Information Science
+    institution: The Oxford College of Engineering
+    year: 2015-2019
 email: ""
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Data Analysis & Visualisation 
+- Creating websites
+- Music 
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: Monash University
+  url: https://www.monash.edu/
+role: Student
 social:
 - icon: envelope
   icon_pack: fas
@@ -27,9 +24,6 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/GeorgeCushen
-- icon: graduation-cap
-  icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
   link: https://github.com/gcushen
@@ -37,13 +31,13 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/
 superuser: true
-title: Nelson Bighetti
+title: Varsha Ujjinni Vijay Kumar
 user_groups:
-- Principal Investigators
+- Grad Students
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Varsha Ujjinni Vijay Kumar is a student at Monash University currently pursuing her higher studies in Business Analytics. She a graduate from India in Bachelor's of Information science and Engineering.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+Her interests include collection of data(data retrieval), data analysis, and visualizations. Her hobbies are Volunteering, Singing, drawing and meeting new people.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.

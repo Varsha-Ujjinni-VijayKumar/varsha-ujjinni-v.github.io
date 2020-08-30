@@ -31,6 +31,14 @@ subtitle = ""
   icon_pack = "fas"
   name = "Photography"
   description = "10%"
+  
+
+[[feature]]
+  icon = "music"
+  icon_pack = "fas"
+  name = "Music & Instruments"
+  description = "60%"
+
 
 # Uncomment to use emoji icons.
 # [[feature]]
