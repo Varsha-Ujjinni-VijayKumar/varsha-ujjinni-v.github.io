@@ -4,6 +4,7 @@ author: "Varsha Ujjinni Vijay Kumar"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -12,35 +13,45 @@ knitr::opts_chunk$set(collapse = TRUE)
 
 ```{r libraries,message=FALSE,warning=FALSE,echo=FALSE}
 library(tidyverse)
-library(ggplot2)
 library(lubridate)
 library(DT)
-library(kableExtra)
+library(arsenal)
+library(widgetframe)
 ```
 
 
 ```{r data-read, message=FALSE,warning=FALSE,echo=FALSE}
-c19_india <- read.csv(here::here("content", "covid_19_india.csv"))
+c19_india <- read.csv(here::here("content/post/covid-19-india/covid_19_india.csv")) %>% 
+  filter(State.UnionTerritory != "Unassigned" &  State.UnionTerritory != "Cases being reassigned to states")
 names(c19_india)[1] <- "ID"
 c19_india$Date <- as.Date.character(c19_india$Date,format = c("%d/%m/%y"))
-state_wise <-read.csv(here::here("data","StatewiseTestingDetails.csv"))
-age_groups <- read.csv(here::here("data","AgeGroupDetails.csv"))
-pop_india<- read.csv(here::here("data","population_india_census2011.csv"))
-tests <- read.csv(here::here("data","ICMRTestingLabs.csv"))
-hospital <- read.csv(here::here("data","HospitalBedsIndia.csv"))
-individual_detils <- read.csv(here::here("data","IndividualDetails.csv"))
+
+state_wise <-read.csv(here::here("content/post/covid-19-india/StatewiseTestingDetails.csv"))
+pop_india<- read.csv(here::here("content/post/covid-19-india/population_india_census2011.csv"))
+hospital <- read.csv(here::here("content/post/covid-19-india/HospitalBedsIndia.csv"))
+#age_groups <- read.csv(here::here("content/post/covid-19-india/AgeGroupDetails.csv"))
+#tests <- read.csv(here::here("content/post/covid-19-india/ICMRTestingLabs.csv"))
+#individual_detils <- read.csv(here::here("content/post/covid-19-india/IndividualDetails.csv"))
 ```
+
+
+**COVID-19** or **coronavirus** is the infectious disease caused by the most recently discovered coronavirus. It was first known in December,2019 at Wuhan,China, which then soon turned into a global pandemic was declared by the World Health Organization([WHO](https://www.euro.who.int/en/health-topics/health-emergencies/coronavirus-covid-19)) on 11 March,2020.
+
+There are many ways that the virus is currently spreading, but it started out to be spread primarily from person to person through small droplets from the nose or mouth, which are expelled when a person sneezes,coughs or speaks. People can catch the virus if they breathe in these droplets. The most common symptoms of this virus have said to be evolving ever since the pandemic first came into effect, where currently people have been diagnosed with it without the initial symptoms. 
+
+[More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
 ```{r datatable, echo=FALSE,message=FALSE,warning=FALSE}
 combined_3 <- c19_india %>% 
   group_by(State.UnionTerritory) %>%  
-  summarise(total = sum(Confirmed), no_cured =sum(Cured), no_deaths = sum(Deaths)) %>% 
+  summarise(total_cases = sum(Confirmed), total_cured =sum(Cured), total_deaths = sum(Deaths)) %>% 
   left_join(hospital, by = c("State.UnionTerritory" = "State.UT")) %>%  
   select(-c(ï..Sno, NumSubDistrictHospitals_HMIS, NumDistrictHospitals_HMIS, NumRuralHospitals_NHP18, NumUrbanHospitals_NHP18)) %>% 
   left_join(pop_india, by = c("State.UnionTerritory" = "State...Union.Territory")) %>%
   select(- c(ï..Sno,Area,Density,Gender.Ratio))
 combined_3 %>% 
+  arrange(desc(total_cases)) %>% 
   datatable(extensions = c('Scroller','FixedColumns','Select','Buttons'), options = list(
     select = list(style = 'os', items = 'row'),
     dom = 'Blfrtip',
@@ -52,5 +63,62 @@ combined_3 %>%
   rowId = 0,
     buttons = c('print', 'csv', 'pdf')
   ),
-  selection = 'none') %>% widgetframe::frameWidget()
+  selection = 'none') %>% frameWidget()
 ```
+
+
+
+```{css height-box,echo = FALSE}
+p{
+  margin-top: 1rem;
+}
+
+caption{
+  text-align: center;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+table{
+  font-size: 0.5rem;
+}
+```
+
+
+
+
+Unfortunately, one of the top 5 places that was affected by the pandemic was India, after United States and Brazil recently with a whooping count of `r sum(c19_india$Confirmed)`.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is `r sum(pop_india$Population)`, which brings to the conclusion that 
+`r (sum(c19_india$Confirmed)/sum(pop_india$Population)*100)` % of people in India have been tested Positive with the virus.
+
+The DT table(datatable) above shows the different states and territories within the country, the number of cases, deaths and recovered cases within each state, this table also shows the total population of each state/territory and the number of hospitals and the number of beds that are available per person within a state/territory for the population, this can be used to predict the efficiency of hospitals within a state/territory to accommodate the people infected. It also shows the difference in population within each state as urban and rural populations and corresponding number of beds within the state. This is a pdf downloadable datatable, all the other data numbers can be viewed by scrolling either *right<-->left* or *up<-->down*.
+The most important part of the analysis of this table is also the top 5 most affected states/territory within the country:
+
+- **Maharashtra** : `r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(total_cases)` confirmed cases, with a population of`r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(Population)`
+
+- **Tamil Nadu** : `r filter(combined_3,State.UnionTerritory == "Tamil Nadu") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Tamil Nadu") %>% select(Population)`
+
+- **Andhra Pradesh** : `r filter(combined_3,State.UnionTerritory == "Andhra Pradesh") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Andhra Pradesh") %>% select(Population)`
+
+- **Delhi** : `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(total_cases)` confirmed cases, with a population of  `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(total_cases)`
+
+- **Karnataka** : `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(Population)` 
+
+
+
+```{r arsenal-table ,results='asis',message=FALSE,warning=FALSE,echo=FALSE, fig.cap="Arsenal table for summary statistics of the top 5 states"}
+c19_india1 <- c19_india %>% filter(State.UnionTerritory == c("Maharashtra","Tamil Nadu","Andhra Pradesh","Delhi","Karnataka"))
+table_one <- tableby(State.UnionTerritory ~ Date + Cured + Deaths + Confirmed , data = c19_india1)
+summary(table_one, title = "Covid 19 cases Data",text = TRUE) 
+```
+
+
+
+
+I know it is a scary time but we need to take all the necessary precautions for ourselves and our loved ones.
+
+![](https://media.giphy.com/media/Qu1fT51CG14ksIkASL/giphy.gif)
+
+
+## References
+
+- @blog

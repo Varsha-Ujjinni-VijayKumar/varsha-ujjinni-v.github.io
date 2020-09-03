@@ -1,0 +1,205 @@
+---
+title: "Covid 19 cases analysis in India"
+author: "Varsha Ujjinni Vijay Kumar"
+date: 2015-07-23T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+bibliography: references.bib
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p><strong>COVID-19</strong> or <strong>coronavirus</strong> is the infectious disease caused by the most recently discovered coronavirus. It was first known in December,2019 at Wuhan,China, which then soon turned into a global pandemic was declared by the World Health Organization(<a href="https://www.euro.who.int/en/health-topics/health-emergencies/coronavirus-covid-19">WHO</a>) on 11 March,2020.</p>
+<p>There are many ways that the virus is currently spreading, but it started out to be spread primarily from person to person through small droplets from the nose or mouth, which are expelled when a person sneezes,coughs or speaks. People can catch the virus if they breathe in these droplets. The most common symptoms of this virus have said to be evolving ever since the pandemic first came into effect, where currently people have been diagnosed with it without the initial symptoms.</p>
+<p><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses">More Information on COVID-19</a></p>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/covid-19-india/covid19-india_files/figure-html//widgets/widget_datatable.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<style type="text/css">
+p{
+  margin-top: 1rem;
+}
+
+caption{
+  text-align: center;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+table{
+  font-size: 0.5rem;
+}
+</style>
+<p>Unfortunately, one of the top 5 places that was affected by the pandemic was India, after United States and Brazil recently with a whooping count of 122437975.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is 1210568111, which brings to the conclusion that
+10.1140922 % of people in India have been tested Positive with the virus.</p>
+<p>The DT table(datatable) above shows the different states and territories within the country, the number of cases, deaths and recovered cases within each state, this table also shows the total population of each state/territory and the number of hospitals and the number of beds that are available per person within a state/territory for the population, this can be used to predict the efficiency of hospitals within a state/territory to accommodate the people infected. It also shows the difference in population within each state as urban and rural populations and corresponding number of beds within the state. This is a pdf downloadable datatable, all the other data numbers can be viewed by scrolling either <em>right&lt;–&gt;left</em> or <em>up&lt;–&gt;down</em>.
+The most important part of the analysis of this table is also the top 5 most affected states/territory within the country:</p>
+<ul>
+<li><p><strong>Maharashtra</strong> : 30698938 confirmed cases, with a population of112374333</p></li>
+<li><p><strong>Tamil Nadu</strong> : 16554118 confirmed cases, with a population of 72147030</p></li>
+<li><p><strong>Andhra Pradesh</strong> : 10102865 confirmed cases, with a population of 49577103</p></li>
+<li><p><strong>Delhi</strong> : 9845140 confirmed cases, with a population of 9845140</p></li>
+<li><p><strong>Karnataka</strong> : 8535942 confirmed cases, with a population of 61095297</p></li>
+</ul>
+<table style="width:100%;">
+<caption>Covid 19 cases Data</caption>
+<colgroup>
+<col width="7%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">Andhra Pradesh (N=15)</th>
+<th align="center">Delhi (N=20)</th>
+<th align="center">Karnataka (N=19)</th>
+<th align="center">Maharashtra (N=16)</th>
+<th align="center">Tamil Nadu (N=32)</th>
+<th align="center">Total (N=102)</th>
+<th align="right">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">0.003</td>
+</tr>
+<tr class="even">
+<td align="left">- Median</td>
+<td align="center">2020-04-20</td>
+<td align="center">2020-04-10</td>
+<td align="center">2020-04-06</td>
+<td align="center">2020-04-13</td>
+<td align="center">2020-05-25</td>
+<td align="center">2020-04-20</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Range</td>
+<td align="center">2020-03-14 - 2020-05-23</td>
+<td align="center">2020-03-03 - 2020-05-21</td>
+<td align="center">2020-03-09 - 2020-05-24</td>
+<td align="center">2020-03-12 - 2020-05-23</td>
+<td align="center">2020-03-07 - 2020-06-10</td>
+<td align="center">2020-03-03 - 2020-06-10</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Cured</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">- Mean (SD)</td>
+<td align="center">408.400 (587.763)</td>
+<td align="center">794.600 (1393.547)</td>
+<td align="center">136.421 (202.675)</td>
+<td align="center">2059.000 (3580.840)</td>
+<td align="center">7344.781 (6762.506)</td>
+<td align="center">2868.500 (5095.893)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">- Range</td>
+<td align="center">0.000 - 1763.000</td>
+<td align="center">0.000 - 5192.000</td>
+<td align="center">0.000 - 608.000</td>
+<td align="center">0.000 - 12583.000</td>
+<td align="center">0.000 - 18325.000</td>
+<td align="center">0.000 - 18325.000</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Deaths</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">- Mean (SD)</td>
+<td align="center">21.200 (20.595)</td>
+<td align="center">36.050 (47.376)</td>
+<td align="center">11.895 (14.008)</td>
+<td align="center">355.812 (482.966)</td>
+<td align="center">110.938 (100.019)</td>
+<td align="center">103.020 (227.632)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Range</td>
+<td align="center">0.000 - 55.000</td>
+<td align="center">0.000 - 176.000</td>
+<td align="center">0.000 - 42.000</td>
+<td align="center">0.000 - 1517.000</td>
+<td align="center">0.000 - 307.000</td>
+<td align="center">0.000 - 1517.000</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Confirmed</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">- Mean (SD)</td>
+<td align="center">976.667 (960.458)</td>
+<td align="center">2393.650 (3300.069)</td>
+<td align="center">396.316 (515.821)</td>
+<td align="center">9363.500 (13743.809)</td>
+<td align="center">13984.469 (12167.330)</td>
+<td align="center">6542.863 (10470.904)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">- Range</td>
+<td align="center">1.000 - 2709.000</td>
+<td align="center">1.000 - 11088.000</td>
+<td align="center">1.000 - 1959.000</td>
+<td align="center">11.000 - 44582.000</td>
+<td align="center">1.000 - 34914.000</td>
+<td align="center">1.000 - 44582.000</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>I know it is a scary time but we need to take all the necessary precautions for ourselves and our loved ones.</p>
+<p><img src="https://media.giphy.com/media/Qu1fT51CG14ksIkASL/giphy.gif" /></p>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ul>
+<li><span class="citation">Xie, Hill, and Thomas (2017)</span></li>
+</ul>
+<div id="refs" class="references">
+<div id="ref-blog">
+<p>Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/blogdown">https://github.com/rstudio/blogdown</a>.</p>
+</div>
+</div>
+</div>
