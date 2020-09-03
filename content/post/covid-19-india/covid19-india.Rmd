@@ -10,4 +10,47 @@ tags: ["R Markdown", "plot", "regression"]
 knitr::opts_chunk$set(collapse = TRUE)
 ```
 
-trying if this post appears.
+```{r libraries,message=FALSE,warning=FALSE,echo=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(lubridate)
+library(DT)
+library(kableExtra)
+```
+
+
+```{r data-read, message=FALSE,warning=FALSE,echo=FALSE}
+c19_india <- read.csv(here::here("content", "covid_19_india.csv"))
+names(c19_india)[1] <- "ID"
+c19_india$Date <- as.Date.character(c19_india$Date,format = c("%d/%m/%y"))
+state_wise <-read.csv(here::here("data","StatewiseTestingDetails.csv"))
+age_groups <- read.csv(here::here("data","AgeGroupDetails.csv"))
+pop_india<- read.csv(here::here("data","population_india_census2011.csv"))
+tests <- read.csv(here::here("data","ICMRTestingLabs.csv"))
+hospital <- read.csv(here::here("data","HospitalBedsIndia.csv"))
+individual_detils <- read.csv(here::here("data","IndividualDetails.csv"))
+```
+
+
+```{r datatable, echo=FALSE,message=FALSE,warning=FALSE}
+combined_3 <- c19_india %>% 
+  group_by(State.UnionTerritory) %>%  
+  summarise(total = sum(Confirmed), no_cured =sum(Cured), no_deaths = sum(Deaths)) %>% 
+  left_join(hospital, by = c("State.UnionTerritory" = "State.UT")) %>%  
+  select(-c(ï..Sno, NumSubDistrictHospitals_HMIS, NumDistrictHospitals_HMIS, NumRuralHospitals_NHP18, NumUrbanHospitals_NHP18)) %>% 
+  left_join(pop_india, by = c("State.UnionTerritory" = "State...Union.Territory")) %>%
+  select(- c(ï..Sno,Area,Density,Gender.Ratio))
+combined_3 %>% 
+  datatable(extensions = c('Scroller','FixedColumns','Select','Buttons'), options = list(
+    select = list(style = 'os', items = 'row'),
+    dom = 'Blfrtip',
+    scrollX = TRUE,
+    scrollY = 300,
+    fixedColumns = list(leftColumns = 2),
+    deferRender = TRUE,
+  scroller = TRUE,
+  rowId = 0,
+    buttons = c('print', 'csv', 'pdf')
+  ),
+  selection = 'none') %>% widgetframe::frameWidget()
+```
