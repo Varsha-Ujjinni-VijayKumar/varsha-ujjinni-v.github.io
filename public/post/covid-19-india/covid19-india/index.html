@@ -269,9 +269,9 @@
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2015-07-23T21:13:14-05:00">
+      <meta property="article:published_time" content="2020-09-04T21:13:14-05:00">
     
-    <meta property="article:modified_time" content="2015-07-23T21:13:14-05:00">
+    <meta property="article:modified_time" content="2020-09-04T21:13:14-05:00">
   
 
   
@@ -299,8 +299,8 @@
   },
   "headline": "Covid 19 cases analysis in India",
   
-  "datePublished": "2015-07-23T21:13:14-05:00",
-  "dateModified": "2015-07-23T21:13:14-05:00",
+  "datePublished": "2020-09-04T21:13:14-05:00",
+  "dateModified": "2020-09-04T21:13:14-05:00",
   
   "author": {
     "@type": "Person",
@@ -643,7 +643,7 @@
     
       
     
-    Jul 23, 2015
+    Sep 4, 2020
   </span>
   
 
@@ -652,7 +652,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    6 min read
   </span>
   
 
@@ -717,8 +717,12 @@ caption{
 table{
   font-size: 0.5rem;
 }
+
+body{
+  font-size: 0.8rem; 
+}
 </style>
-<p>Unfortunately, one of the top 5 places that was affected by the pandemic was India, after United States and Brazil recently with a whooping count of 122437975.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is 1210568111, which brings to the conclusion that
+<p>Unfortunately, one of the top 5 places that was affected by the pandemic was <strong>India</strong>, after <em>United States</em> and <em>Brazil</em> recently with a whooping count of 122437975.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is 1210568111, which brings to the conclusion that
 10.1140922 % of people in India have been tested Positive with the virus.</p>
 <p>The DT table(datatable) above shows the different states and territories within the country, the number of cases, deaths and recovered cases within each state, this table also shows the total population of each state/territory and the number of hospitals and the number of beds that are available per person within a state/territory for the population, this can be used to predict the efficiency of hospitals within a state/territory to accommodate the people infected. It also shows the difference in population within each state as urban and rural populations and corresponding number of beds within the state. This is a pdf downloadable datatable, all the other data numbers can be viewed by scrolling either <em>right&lt;–&gt;left</em> or <em>up&lt;–&gt;down</em>.
 The most important part of the analysis of this table is also the top 5 most affected states/territory within the country:</p>
@@ -876,14 +880,42 @@ The most important part of the analysis of this table is also the top 5 most aff
 </tr>
 </tbody>
 </table>
-<p>I know it is a scary time but we need to take all the necessary precautions for ourselves and our loved ones.</p>
+<p>Having done the datatable which shows the top 5 states/territories that have been adversely affected by the virus as our examples for the computation of our summary statistics (Mean, Range, etc) , this can be produced by using the arsenal package in r for creating descriptive summary statistics.</p>
+<p>The table <a href="#tab:arsenaltb"><strong>??</strong></a> shows the relation of the state/territory with the other factors like death, recovered and ofcourse, the timeline it occurred.</p>
+<p>What does the arsenal table depict?</p>
+<p>Well the answer is pretty simple, for every state in the table, the factors are calculated for a p-value which helps in prediction of data, here in our case the case that whether these factors(death,cure,date,etc) affect the number of total confirmed cases within the state and hence the overall country. Looking at the last column within our table <a href="#tab:arsenaltb"><strong>??</strong></a>, we see a p-value of either 0.003 or 0 which is a value very less than the significance level (0.05), which means that the values death, cured, date and<br />
+confirmed cases are factors of change for the values within each state.</p>
+<p>The means and ranges for each of the factors against the states have also been calculated.</p>
+<ul>
+<li><p>There are certain dates within the cumulative dates that we have that are very significant and stand out for the dataset.</p></li>
+<li><p>The means for cured depict the state that had a very high average rate of recovery, which according to the table is <strong>Tamil Nadu</strong> followed by <strong>Maharashtra</strong> .</p></li>
+<li><p>The means for Deaths depict the average deaths within each state and the highest rate of deaths according to the table is in <strong>Maharashtra</strong>.</p></li>
+<li><p>The means for Confirmed Cases within each state depict the cases with positive test results with <strong>Maharashtra</strong> at the top which matches our analysis with the datatable from above.</p></li>
+</ul>
+<p>From the above analysis, we can conclude by saying that the overall situation of the country is not good, with cases increasing everyday and a population so high, precautions are a must. The state with the highest number of cases and deaths with less recovery rate is Maharashtra.</p>
+<p>I know it is a scary time but we need to take all the necessary precautions for ourselves and our loved ones. Stay Safe!</p>
 <p><img src="https://media.giphy.com/media/Qu1fT51CG14ksIkASL/giphy.gif" /></p>
 <div id="references" class="section level2">
 <h2>References</h2>
 <ul>
-<li><span class="citation">Xie, Hill, and Thomas (2017)</span></li>
+<li><p>How to Easily Create Descriptive Summary Statistics Tables in R Studio - By Group. Thatdatatho.com. (2020). Retrieved 3 September 2020, from <a href="http://thatdatatho.com/2018/08/20/easily-create-descriptive-summary-statistic-tables-r-studio/" class="uri">http://thatdatatho.com/2018/08/20/easily-create-descriptive-summary-statistic-tables-r-studio/</a>.</p></li>
+<li><p>Covid:19 India Data Analysis and Forecasting. Kaggle.com. (2020). Retrieved 3 September 2020, from <a href="https://www.kaggle.com/anujgupta872003/covid-19-india-data-analysis-and-forecasting" class="uri">https://www.kaggle.com/anujgupta872003/covid-19-india-data-analysis-and-forecasting</a>.</p></li>
+<li><p><span class="citation">Xie, Hill, and Thomas (2017)</span></p></li>
+<li><p><span class="citation">Wickham et al. (2019)</span></p></li>
+<li><p><span class="citation">Heinzen et al. (2020)</span></p></li>
+<li><p><span class="citation">Xie, Cheng, and Tan (2020)</span></p></li>
+<li><p>Corona Stay Home GIF by INTO ACTION - Find &amp; Share on GIPHY. GIPHY. (2020). Retrieved 3 September 2020, from <a href="https://giphy.com/gifs/IntoAction-chart-stay-home-stayhome-Qu1fT51CG14ksIkASL" class="uri">https://giphy.com/gifs/IntoAction-chart-stay-home-stayhome-Qu1fT51CG14ksIkASL</a>.</p></li>
 </ul>
 <div id="refs" class="references">
+<div id="ref-arsenal">
+<p>Heinzen, Ethan, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson, and Gregory Dougherty. 2020. <em>Arsenal: An Arsenal of ’R’ Functions for Large-Scale Statistical Summaries</em>. <a href="https://CRAN.R-project.org/package=arsenal">https://CRAN.R-project.org/package=arsenal</a>.</p>
+</div>
+<div id="ref-tidy">
+<p>Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.</p>
+</div>
+<div id="ref-DT">
+<p>Xie, Yihui, Joe Cheng, and Xianying Tan. 2020. <em>DT: A Wrapper of the Javascript Library ’Datatables’</em>. <a href="https://CRAN.R-project.org/package=DT">https://CRAN.R-project.org/package=DT</a>.</p>
+</div>
 <div id="ref-blog">
 <p>Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/blogdown">https://github.com/rstudio/blogdown</a>.</p>
 </div>
