@@ -100,7 +100,7 @@ The DT figure 1 above shows the different states and territories within the coun
 #   group_by(Date) %>% summarise(Cured=sum(Cured),Deaths=sum(Deaths),Case=sum(Confirmed)) %>%
 #   arrange(Case) %>%  head()
 plot_datas <- combined_3 %>% arrange(desc(total_cases)) %>% head(5)
-ggplot(plot_datas, aes(x=reorder(State.UnionTerritory,total_cases), y=total_cases))+geom_col(fill="pink")+ theme(axis.text.x=element_text(size=20, angle=90, hjust = 1, vjust = 0.5 )) +           xlab("States/UTs")+ylab("Total Cases")+ labs(title="State/UT-wise Cases of COVID-19")+ theme_bw() + geom_text(aes(label=round(total_cases) ), position=position_dodge(width=1.0),vjust=-0.25,angle=270)
+ggplot(plot_datas, aes(x=reorder(State.UnionTerritory,- total_cases), y=total_cases))+geom_col(fill="pink")+ theme(axis.text.x=element_text(size=20, angle=90, hjust = 1, vjust = 0.5 ),axis.text.y = element_blank()) +           xlab("States/UTs")+ylab("Total Number of Cases")+ labs(title=" Top 5 State/UT-wise Cases of COVID-19")+ theme_bw() + geom_text(aes(label=round(total_cases) ), position=position_dodge(width=0.5),angle=270) 
 ```
 
 The highlight of the analysis of this table is to look at the top 5 most affected states/territory within the country:
@@ -115,7 +115,7 @@ The highlight of the analysis of this table is to look at the top 5 most affecte
 
 - **Karnataka** : `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(Population)` 
 
-This can also be seen in the figure \@ref(fig:bar) for better visualization.
+This can also be observed in the figure \@ref(fig:bar) for better visualization.
 
 
 
@@ -152,16 +152,18 @@ I know it is a scary time but we need to take all the necessary precautions for 
 
 ## References
 
-- How to Easily Create Descriptive Summary Statistics Tables in R Studio - By Group. Thatdatatho.com. (2020). Retrieved 3 September 2020, from http://thatdatatho.com/2018/08/20/easily-create-descriptive-summary-statistic-tables-r-studio/.
+How to Easily Create Descriptive Summary Statistics Tables in R Studio - By Group. Thatdatatho.com. (2020). Retrieved 3 September 2020, from http://thatdatatho.com/2018/08/20/easily-create-descriptive-summary-statistic-tables-r-studio/.
 
-- Covid:19 India Data Analysis and Forecasting. Kaggle.com. (2020). Retrieved 3 September 2020, from https://www.kaggle.com/anujgupta872003/covid-19-india-data-analysis-and-forecasting.
+Covid:19 India Data Analysis and Forecasting. Kaggle.com. (2020). Retrieved 3 September 2020, from https://www.kaggle.com/anujgupta872003/covid-19-india-data-analysis-and-forecasting.
 
-- @blog
+Corona Stay Home GIF by INTO ACTION - Find & Share on GIPHY. GIPHY. (2020). Retrieved 3 September 2020, from https://giphy.com/gifs/IntoAction-chart-stay-home-stayhome-Qu1fT51CG14ksIkASL.
 
-- @tidy
+Yihui Xie, Alison Presmanes Hill, and Amber Thomas (2017). blogdown: Creating Websites with R Markdown. Chapman and Hall/CRC. ISBN 978-0815363729
 
-- @arsenal
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
 
-- @DT
+Ethan Heinzen, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson and Gregory Dougherty (2020). arsenal: An Arsenal of 'R' Functions for Large-Scale Statistical
+  Summaries. R package version 3.5.0. https://CRAN.R-project.org/package=arsenal
 
-- Corona Stay Home GIF by INTO ACTION - Find & Share on GIPHY. GIPHY. (2020). Retrieved 3 September 2020, from https://giphy.com/gifs/IntoAction-chart-stay-home-stayhome-Qu1fT51CG14ksIkASL.
+Yihui Xie, Joe Cheng and Xianying Tan (2020). DT: A Wrapper of the JavaScript Library 'DataTables'. R package version 0.15.
+  https://CRAN.R-project.org/package=DT
