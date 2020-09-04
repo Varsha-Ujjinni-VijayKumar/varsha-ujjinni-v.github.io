@@ -1,5 +1,5 @@
 ---
-title: "Covid 19 cases analysis in India"
+title: "COVID-19 case analysis in India"
 author: "Varsha Ujjinni Vijay Kumar"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
@@ -35,14 +35,14 @@ hospital <- read.csv(here::here("content/post/covid-19-india/HospitalBedsIndia.c
 ```
 
 
-**COVID-19** or **coronavirus** is the infectious disease caused by the most recently discovered coronavirus. It was first known in December,2019 at Wuhan,China, which then soon turned into a global pandemic was declared by the World Health Organization([WHO](https://www.euro.who.int/en/health-topics/health-emergencies/coronavirus-covid-19)) on 11 March,2020.
+**COVID-19** or **coronavirus** is the infectious disease caused by the most recently discovered coronavirus. It was first known in December,2019 at Wuhan,China, which then soon turned into a global pandemic as declared by the World Health Organization([WHO](https://www.euro.who.int/en/health-topics/health-emergencies/coronavirus-covid-19)) on 11 March,2020.
 
-There are many ways that the virus is currently spreading, but it started out to be spread primarily from person to person through small droplets from the nose or mouth, which are expelled when a person sneezes,coughs or speaks. People can catch the virus if they breathe in these droplets. The most common symptoms of this virus have said to be evolving ever since the pandemic first came into effect, where currently people have been diagnosed with it without the initial symptoms. 
+There are many ways that the virus is currently spreading, but it started out to be spread primarily from person to person through small droplets from the nose or mouth, which are expelled when a person sneezes,coughs or speaks. People can catch the virus if they breathe in these droplets. The most common symptoms of this virus have said to be evolving ever since the pandemic first came into effect, where currently people have been diagnosed with the virus without the initial symptoms like cough,fever,etc. 
 
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
-```{r datatable, echo=FALSE,message=FALSE,warning=FALSE}
+```{r datatbl, echo=FALSE,message=FALSE,warning=FALSE}
 combined_3 <- c19_india %>% 
   group_by(State.UnionTerritory) %>%  
   summarise(total_cases = sum(Confirmed), total_cured =sum(Cured), total_deaths = sum(Deaths)) %>% 
@@ -70,7 +70,7 @@ combined_3 %>%
 
 ```{css height-box,echo = FALSE}
 p{
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 caption{
@@ -85,48 +85,57 @@ table{
 
 body{
   font-size: 0.8rem; 
+  text-align: justify;
 }
 ```
 
+Unfortunately, one of the top 5 countries that were affected by the pandemic was **India**, after *United States* and *Brazil* recently with a whooping count of `r sum(c19_india$Confirmed)`.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is `r sum(pop_india$Population)`, which brings to the conclusion that 
+`r (sum(c19_india$Confirmed)/sum(pop_india$Population)*100)`% of population in India have been tested Positive with the virus.
 
+The DT figure 1 above shows the different states and territories within the country, the number of cases, deaths and recovered cases within each state, this table also shows the total population of each state/territory and the number of hospitals and the number of beds that are available per person within a state/territory for the population, this can be used to predict the efficiency of hospitals within a state/territory to accommodate the people infected. It also shows the difference in population within each state as urban and rural populations and corresponding number of beds within the state. This is a pdf downloadable datatable, all the other data numbers can be viewed by scrolling either *right<-->left* or *up<-->down*.
 
+```{r bar,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Bar plot for visualising the total cases in the states"}
+# plot_data <- c19_india %>% 
+#   select(State.UnionTerritory,Date,Cured,Deaths,Confirmed) %>% 
+#   group_by(Date) %>% summarise(Cured=sum(Cured),Deaths=sum(Deaths),Case=sum(Confirmed)) %>%
+#   arrange(Case) %>%  head()
+plot_datas <- combined_3 %>% arrange(desc(total_cases)) %>% head(5)
+ggplot(plot_datas, aes(x=reorder(State.UnionTerritory,total_cases), y=total_cases))+geom_col(fill="pink")+ theme(axis.text.x=element_text(size=20, angle=90, hjust = 1, vjust = 0.5 )) +           xlab("States/UTs")+ylab("Total Cases")+ labs(title="State/UT-wise Cases of COVID-19")+ theme_bw() + geom_text(aes(label=round(total_cases) ), position=position_dodge(width=1.0),vjust=-0.25,angle=270)
+```
 
-Unfortunately, one of the top 5 places that was affected by the pandemic was **India**, after *United States* and *Brazil* recently with a whooping count of `r sum(c19_india$Confirmed)`.This is a relatively high number of people who were confirmed with the covid virus tests, as the population of India is `r sum(pop_india$Population)`, which brings to the conclusion that 
-`r (sum(c19_india$Confirmed)/sum(pop_india$Population)*100)` % of people in India have been tested Positive with the virus.
+The highlight of the analysis of this table is to look at the top 5 most affected states/territory within the country:
 
-The DT table(datatable) above shows the different states and territories within the country, the number of cases, deaths and recovered cases within each state, this table also shows the total population of each state/territory and the number of hospitals and the number of beds that are available per person within a state/territory for the population, this can be used to predict the efficiency of hospitals within a state/territory to accommodate the people infected. It also shows the difference in population within each state as urban and rural populations and corresponding number of beds within the state. This is a pdf downloadable datatable, all the other data numbers can be viewed by scrolling either *right<-->left* or *up<-->down*.
-The most important part of the analysis of this table is also the top 5 most affected states/territory within the country:
-
-- **Maharashtra** : `r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(total_cases)` confirmed cases, with a population of`r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(Population)`
+- **Maharashtra** : `r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Maharashtra") %>% select(Population)`
 
 - **Tamil Nadu** : `r filter(combined_3,State.UnionTerritory == "Tamil Nadu") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Tamil Nadu") %>% select(Population)`
 
 - **Andhra Pradesh** : `r filter(combined_3,State.UnionTerritory == "Andhra Pradesh") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Andhra Pradesh") %>% select(Population)`
 
-- **Delhi** : `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(total_cases)` confirmed cases, with a population of  `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(total_cases)`
+- **Delhi** : `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(total_cases)` confirmed cases, with a population of  `r filter(combined_3,State.UnionTerritory == "Delhi") %>% select(Population)`
 
 - **Karnataka** : `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(total_cases)` confirmed cases, with a population of `r filter(combined_3,State.UnionTerritory == "Karnataka") %>% select(Population)` 
 
+This can also be seen in the figure \@ref(fig:bar) for better visualization.
 
 
-```{r arsenaltb ,results='asis',message=FALSE,warning=FALSE,echo=FALSE, fig.cap="Covid 19 cases Data"}
+
+```{r artb ,results='asis',message=FALSE,warning=FALSE,echo=FALSE}
 c19_india1 <- c19_india %>% filter(State.UnionTerritory == c("Maharashtra","Tamil Nadu","Andhra Pradesh","Delhi","Karnataka"))
 table_one <- tableby(State.UnionTerritory ~ Date + Cured + Deaths + Confirmed , data = c19_india1)
-summary(table_one, title = "Covid 19 cases Data",text = TRUE) 
+summary(table_one, title = ("(\\#tab:mytableby) Summary Stats for covid cases in India"),text = TRUE) 
 ```
 
-Having done the datatable which shows the top 5 states/territories that have been adversely affected by the virus as our examples for the computation of our summary statistics (Mean, Range, etc) , this can be produced by using the arsenal package in r for creating descriptive summary statistics. 
+Having done the datatable which shows the top 5 states/territories that have been adversely affected by the virus as our examples, we can further analyse the summary statistics for those states(Mean, Range, etc) which helps us understand the rate of infection, this can be produced by using the arsenal package in r for creating descriptive summary statistics. 
 
-The table \@ref(tab:arsenaltb) shows the relation of the state/territory with the other factors like death, recovered and ofcourse, the timeline it occurred. 
+The table \@ref(tab:mytableby) shows the relation of the state/territory with the other variables like death, recovered and ofcourse, the timeline of number of cases recorded. 
 
 What does the arsenal table depict?
 
-Well the answer is pretty simple, for every state in the table, the factors are calculated for a p-value which helps in prediction of data, here in our case the case that whether these factors(death,cure,date,etc) affect the number of total confirmed cases within the state and hence the overall country. Looking at the last column within our table \@ref(tab:arsenaltb), we see a p-value of either 0.003 or 0 which is a value very less than the significance level (0.05), which means that the values death, cured, date and  
-confirmed cases are factors of change for the values within each state. 
+Well the answer is pretty simple, for every state in the table, the factors are calculated for a p-value which helps in prediction of data, here in our case the case that whether these factors(death,cure,date,etc) affect the number of total confirmed cases within the state and hence the overall country. Looking at the last column within our table \@ref(tab:mytableby), we see a **p-value** of either *0.003* or *0* which is a value very less than the significance level (0.05), which means that the values death, cured, date and confirmed cases are factors of change for the rate of infection within each state. 
 
 The means and ranges for each of the factors against the states have also been calculated.
 
-- There are certain dates within the cumulative dates that we have that are very significant and stand out for the dataset.
+- There are certain dates within the cumulative dates that are very significant and stand out for the our analysis.
 
 - The means for cured depict the state that had a very high average rate of recovery, which according to the table is **Tamil Nadu** followed by **Maharashtra** .
 
@@ -134,7 +143,7 @@ The means and ranges for each of the factors against the states have also been c
 
 - The means for Confirmed Cases within each state depict the cases with positive test results with  **Maharashtra** at the top which matches our analysis with the datatable from above.
 
-From the above analysis, we can conclude by saying that the overall situation of the country is not good, with cases increasing everyday and a population so high, precautions are a must. The state with the highest number of cases and deaths with less recovery rate is Maharashtra.
+From the above analysis, we can conclude by saying that the overall situation of the country is not good, with cases increasing everyday and a population so high, precautions are a must. The state with the highest number of recorded cases and deaths with very low recovery rate in accordance to the infection rate is Maharashtra.
 
 I know it is a scary time but we need to take all the necessary precautions for ourselves and our loved ones. Stay Safe!
 

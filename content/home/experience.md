@@ -37,8 +37,8 @@ experience:
   title: Intern
 - company: Magnasoft Pvt. Ltd.
   company_url: ""
-  date_end: "2019-05-01"
-  date_start: "2019-06-01"
+  date_end: "2018-08-24"
+  date_start: "2018-07-24"
   description: Intern for a month for developing a software for the company.
   location: Bangalore, Karnataka
   title: Intern
