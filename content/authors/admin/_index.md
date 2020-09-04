@@ -36,7 +36,7 @@ user_groups:
 - Grad Students
 ---
 
-Varsha Ujjinni Vijay Kumar is a student at Monash University currently pursuing her higher studies in Business Analytics. She a graduate from India in Bachelor's of Information science and Engineering.
+Varsha Ujjinni Vijay Kumar is a student at Monash University currently pursuing her higher studies in Business Analytics. She is a graduate from India in Bachelor's of Information science and Engineering.
 
 Her interests include collection of data(data retrieval), data analysis, and visualizations. Her hobbies are Volunteering, Singing, drawing and meeting new people.
 
