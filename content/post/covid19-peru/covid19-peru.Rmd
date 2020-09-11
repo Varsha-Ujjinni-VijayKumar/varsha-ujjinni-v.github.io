@@ -45,6 +45,16 @@ gender_table <- read.csv("state-details.csv")
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
+```{r high-province,message=FALSE,warning=FALSE}
+gender_table <- read.csv("state-details.csv")
+provinces <- gender_table %>% group_by(Province) %>% count(Province,sort = TRUE) %>% head()
+ggplot(provinces,aes(x = Province, y = n,fill = Province)) + 
+  geom_col() + 
+  coord_flip() +
+  ylab("Deaths") +
+  theme_minimal() +
+  theme(legend.position= "none") 
+```
 
 
 
