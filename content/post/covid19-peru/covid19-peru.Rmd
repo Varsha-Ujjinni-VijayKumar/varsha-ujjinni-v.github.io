@@ -58,6 +58,14 @@ ggplot(peru_data,aes(x = date),size = 1.0) +
   labs(title="Count of Covid19 cases(total cases and Deaths)")
 ```
 
+```{r new-cases,warning=FALSE,message=FALSE}
+ggplot(peru_data,aes(x = date, y = new_cases)) +
+  geom_point(color = "#69b3a2") + 
+  geom_smooth() +
+  theme_minimal() +
+  ylab("New cases") +
+  xlab("Month")
+```
 
 
 
