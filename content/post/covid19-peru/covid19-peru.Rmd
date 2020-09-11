@@ -43,10 +43,14 @@ gender_table <- read.csv("state-details.csv")
 ```
 
 
+On 12 January 2020, the World Health Organization (WHO) confirmed that a novel coronavirus was the cause of a respiratory illness in a cluster of people in Wuhan City, Hubei Province, China, which was reported to the WHO on 31 December 2019. COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.
+
+COVID-19 risk is really high in Peru. Its statistics ranks it to be the 5th most affected country in the world after USA, India, Brazil and Russia with 710,067 cases as of September 11th, 2020 by the [worldometer website](https://www.worldometers.info/coronavirus/). The timeline of how COVID-19 was first discovered in Peru has been given on [Wiki](https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Peru). The virus was reported to have spread to Peru on 6 March 2020, when a 25-year-old man who had traveled to Spain, France, and the Czech Republic tested positive. On 15 March 2020, President Martín Vizcarra announced a country-wide lockdown, closing borders, restricting domestic travel, and forbidding nonessential business operations.
+
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
-```{r plot-cases,message=FALSE,warning=FALSE}
+```{r plot-cases,message=FALSE,warning=FALSE,echo=FALSE}
 peru_data <- peru_data %>% mutate(month = month(date))
 p1 <- ggplot(peru_data,aes(x = date),size = 1.0) + 
   geom_line(aes(y = total_cases, color = "total_cases"),size = 1.0)+
@@ -60,20 +64,20 @@ p1 <- ggplot(peru_data,aes(x = date),size = 1.0) +
 ggplotly(p1)
 ```
 
-```{r new-cases,warning=FALSE,message=FALSE}
+```{r new-cases,warning=FALSE,message=FALSE,echo=FALSE}
 p2 <- ggplot(peru_data,aes(x = date, y = new_cases)) +
   geom_point(color = "#69b3a2") + 
   geom_smooth() +
   theme_minimal() +
   theme(axis.text.y = element_blank())+
-  ylab("New cases") +
+  ylab("New daily cases") +
   xlab("Month")
 ggplotly(p2)
 ```
 
 
 
-```{r high-province,message=FALSE,warning=FALSE}
+```{r high-province,message=FALSE,warning=FALSE,echo=FALSE}
 gender_table <- read.csv("state-details.csv")
 provinces <- gender_table %>% group_by(Province) %>% count(Province,sort = TRUE) %>% head()
 ggplot(provinces,aes(x = Province, y = n,fill = Province)) + 
@@ -84,7 +88,7 @@ ggplot(provinces,aes(x = Province, y = n,fill = Province)) +
   theme(legend.position= "none") 
 ```
 
-```{r gender-plot,message=FALSE,warning=FALSE}
+```{r gender-plot,message=FALSE,warning=FALSE,echo=FALSE}
 gender <- gender_table %>% group_by(Sex,Province) %>% count(Sex,sort = TRUE) %>% head(25)
 ggplot(gender,aes(x = n, y = Province,fill = Sex)) + 
   geom_col() + 
@@ -94,7 +98,7 @@ ggplot(gender,aes(x = n, y = Province,fill = Sex)) +
   theme(legend.position = "none") 
 ```
 
-```{r age-plot,message=FALSE,warning=FALSE}
+```{r age-plot,message=FALSE,warning=FALSE,echo=FALSE}
 Age <- gender_table %>% group_by(Sex,Age) %>% count(Age,sort = TRUE) 
 ggplot(Age,aes(x = Age, y = n,fill = Sex)) + 
   geom_col(binwidth = 10) + 
