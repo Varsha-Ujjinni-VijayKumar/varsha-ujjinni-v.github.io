@@ -50,13 +50,13 @@ COVID-19 risk is really high in Peru. Its statistics ranks it to be the 5th most
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
-```{r plot-cases,message=FALSE,warning=FALSE,echo=FALSE}
+```{r plot-cases,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Count of Covid19 cases(total cases and Deaths)"}
 peru_data <- peru_data %>% mutate(month = month(date))
 p1 <- ggplot(peru_data,aes(x = date),size = 1.0) + 
   geom_line(aes(y = total_cases, color = "total_cases"),size = 1.0)+
   geom_line(aes(y = total_deaths,color = "total_deaths"),size = 1.0)+
   theme_minimal() +
-  ylab("Total Cases") +
+  ylab("Total Cases/Deaths") +
   xlab("Month")+
   theme(legend.title = element_blank(),axis.text.y = element_blank())+
   #scale_x_continuous(breaks = scales::pretty_breaks()) +
@@ -64,10 +64,12 @@ p1 <- ggplot(peru_data,aes(x = date),size = 1.0) +
 ggplotly(p1)
 ```
 
-```{r new-cases,warning=FALSE,message=FALSE,echo=FALSE}
+The plot \@ref(fig:plot-cases) depicts a line graph for the total cases/deaths on the y-axis and Month/date on the x-axis. Looking at the graph, it can be seen that the cases in Peru did not start until the month of March,2020 and has since exponentially increased consistently till date(Sept 8th,2020) where the count of total cases is `r max(peru_data$date)`. The graph also depicts the total deaths in the country, where the first death occurred on the 20th March,2020, with respect to the total number of cases, it seems that the total number of deaths are quite less so that is good for the country. Over the months there has been a slight increase in the number of deaths but has not gone more than 30K. There are two dates that has a step wise increase in the deaths(~ 3000 deaths a day) on 24th July,2020 and (~4000 deaths a day) on 14th August,2020 and total number number of deaths currently at 29,976.
+
+```{r new-cases,warning=FALSE,message=FALSE,echo=FALSE,fig.cap="Daily new cases"}
 p2 <- ggplot(peru_data,aes(x = date, y = new_cases)) +
   geom_point(color = "#69b3a2") + 
-  geom_smooth() +
+  geom_line() +
   theme_minimal() +
   theme(axis.text.y = element_blank())+
   ylab("New daily cases") +
@@ -75,7 +77,7 @@ p2 <- ggplot(peru_data,aes(x = date, y = new_cases)) +
 ggplotly(p2)
 ```
 
-
+The plot \@ref(fig:new_cases) shows a point graph with a line passing through it that helps see how the trends have been since the first record and then the different points indicate the dates on which the cases were recorded. As referred in the introduction, the first case recorded was on March 7th. The number of cases on a daily basis has been changing throughout, the first highest recorded cases was on 1st June with 8805 cases, and notably the very next day there was a huge drop in the cases equal to 0 which is very suspicious and this happens twice before the cases recorded has spiked to a high value of 10143 on 17th August and currently there has been a decrease in the cases all the way to 1598. 
 
 ```{r high-province,message=FALSE,warning=FALSE,echo=FALSE}
 gender_table <- read.csv("state-details.csv")
