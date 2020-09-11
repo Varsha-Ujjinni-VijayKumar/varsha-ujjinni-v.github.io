@@ -137,7 +137,8 @@ Lastly, the plot \@ref(fig:age-plot) depicts the bar plot of number of deaths oc
 
 # References
 
-@data  - *Data source*
+@data  
+@clark 
 @tidy
 @blog
 @gg
