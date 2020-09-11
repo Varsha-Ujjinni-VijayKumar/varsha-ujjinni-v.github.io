@@ -45,6 +45,22 @@ gender_table <- read.csv("state-details.csv")
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
 
+```{r plot-cases,message=FALSE,warning=FALSE}
+peru_data <- peru_data %>% mutate(month = month(date))
+ggplot(peru_data,aes(x = date),size = 1.0) + 
+  geom_line(aes(y = total_cases, color = "total_cases"),size = 1.0)+
+  geom_line(aes(y = total_deaths,color = "total_deaths"),size = 1.0)+
+  theme_minimal() +
+  ylab("Total Cases") +
+  xlab("Month")+
+  theme(legend.title = element_blank())+
+  #scale_x_continuous(breaks = scales::pretty_breaks()) +
+  labs(title="Count of Covid19 cases(total cases and Deaths)")
+```
+
+
+
+
 ```{r high-province,message=FALSE,warning=FALSE}
 gender_table <- read.csv("state-details.csv")
 provinces <- gender_table %>% group_by(Province) %>% count(Province,sort = TRUE) %>% head()
