@@ -82,3 +82,13 @@ ggplot(gender,aes(x = n, y = Province,fill = Sex)) +
   theme(legend.position = "none") 
 ```
 
+```{r age-plot,message=FALSE,warning=FALSE}
+Age <- gender_table %>% group_by(Sex,Age) %>% count(Age,sort = TRUE) 
+ggplot(Age,aes(x = Age, y = n,fill = Sex)) + 
+  geom_col(binwidth = 10) + 
+  facet_wrap(~Sex)  + 
+  ylab("Deaths") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  xlim(0,50)
+```
