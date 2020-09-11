@@ -1,0 +1,50 @@
+---
+title: "Visualising COVID-19 in Peru"
+author: "Varsha Ujjinni Vijay Kumar"
+date: 2015-07-23T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+```{r libraries,message=FALSE,warning=FALSE,echo=FALSE}
+library(tidyverse)
+library(lubridate)
+```
+
+
+```{r data-read-store, message=FALSE,warning=FALSE,echo=FALSE,eval=FALSE}
+covid <- read.csv("owid-covid-data.csv")
+peru <- covid %>% filter(iso_code == "PER")
+peru_data <- write.csv(peru, file = "C:/Users/varsh/Documents/semester2/CWD 5523/assignment/blog-2/peru_covid.csv")
+gender_table1 <- read.csv("fallecidos_covid.csv")
+gender_table1 <- gender_table1 %>% rename(c(
+  "ID " = "UUID",
+  "Death_Date" = "FECHA_FALLECIMIENTO",
+  "Age" = "EDAD_DECLARADA",
+  "Sex" = "SEXO",
+  "Birth_Date" = "FECHA_NAC",
+  "Department" = "DEPARTAMENTO",
+  "Province" = "PROVINCIA",
+  "Districts" = "DISTRITO")) 
+write.csv(gender_table1,file = "C:/Users/varsh/Documents/semester2/CWD 5523/assignment/blog-2/state-details.csv")
+```
+
+
+```{r read-data,message=FALSE,warning=FALSE,echo=FALSE}
+peru_data <- read.csv("peru_covid.csv")
+peru_data$date <- lubridate::as_date(peru_data$date)
+gender_table <- read.csv("state-details.csv")
+```
+
+
+[More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
+
+
+
+
+
