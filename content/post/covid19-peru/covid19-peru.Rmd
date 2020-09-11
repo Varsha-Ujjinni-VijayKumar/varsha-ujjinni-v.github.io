@@ -64,6 +64,24 @@ p1 <- ggplot(peru_data,aes(x = date),size = 1.0) +
 ggplotly(p1)
 ```
 
+
+
+```{css height-box,echo = FALSE}
+caption{
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+body{
+  font-size: 0.8rem; 
+  text-align: justify;
+}
+```
+
+
+
+
+
 The plot \@ref(fig:plot-cases) depicts a line graph for the total cases/deaths on the y-axis and Month/date on the x-axis. Looking at the graph, it can be seen that the cases in Peru did not start until the month of March,2020 and has since exponentially increased consistently till date(Sept 8th,2020) where the count of total cases is `r max(peru_data$date)`. The graph also depicts the total deaths in the country, where the first death occurred on the 20th March,2020, with respect to the total number of cases, it seems that the total number of deaths are quite less so that is good for the country. Over the months there has been a slight increase in the number of deaths but has not gone more than 30K. There are two dates that has a step wise increase in the deaths(~ 3000 deaths a day) on 24th July,2020 and (~4000 deaths a day) on 14th August,2020 and total number number of deaths currently at 29,976.
 
 ```{r new-cases,warning=FALSE,message=FALSE,echo=FALSE,fig.cap="Daily new cases"}
@@ -73,24 +91,26 @@ p2 <- ggplot(peru_data,aes(x = date, y = new_cases)) +
   theme_minimal() +
   theme(axis.text.y = element_blank())+
   ylab("New daily cases") +
-  xlab("Month")
+  xlab("Month")+
+  labs(title="Daily new cases")
 ggplotly(p2)
 ```
 
-The plot \@ref(fig:new_cases) shows a point graph with a line passing through it that helps see how the trends have been since the first record and then the different points indicate the dates on which the cases were recorded. As referred in the introduction, the first case recorded was on March 7th. The number of cases on a daily basis has been changing throughout, the first highest recorded cases was on 1st June with 8805 cases, and notably the very next day there was a huge drop in the cases equal to 0 which is very suspicious and this happens twice before the cases recorded has spiked to a high value of 10143 on 17th August and currently there has been a decrease in the cases all the way to 1598. 
+The plot \@ref(fig:new-cases) shows a point graph with a line passing through it that helps see how the trends have been since the first record and then the different points indicate the dates on which the cases were recorded. As referred in the introduction, the first case recorded was on March 7th. The number of cases on a daily basis has been changing throughout, the first highest recorded cases was on 1st June with 8805 cases, and notably the very next day there was a huge drop in the cases equal to 0 which is very suspicious and this happens twice before the cases recorded has spiked to a high value of 10143 on 17th August and currently there has been a decrease in the cases all the way to 1598. 
 
-```{r high-province,message=FALSE,warning=FALSE,echo=FALSE}
+```{r high-province,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Highest cases amongst the provinces in Peru"}
 gender_table <- read.csv("state-details.csv")
 provinces <- gender_table %>% group_by(Province) %>% count(Province,sort = TRUE) %>% head()
-ggplot(provinces,aes(x = Province, y = n,fill = Province)) + 
+ggplot(provinces,aes(x = n, y = Province,fill = Province)) + 
   geom_col() + 
-  coord_flip() +
-  ylab("Deaths") +
+  xlab("Deaths") +
   theme_minimal() +
   theme(legend.position= "none") 
 ```
 
-```{r gender-plot,message=FALSE,warning=FALSE,echo=FALSE}
+The bar plot \@ref(fig:high-province) with the province names on the y-axis and the number of deaths on the x-axis, with the province `r filter(provinces,Province == "LIMA") %>% select(n)` number of deaths throughout the months followed by both `r filter(provinces,Province == "CALLAO") %>% select(n)` and `r filter(provinces,Province == "TRUJILLO") %>% select(n)` number of deaths in the entire country of Peru.
+
+```{r gender-plot,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Difference between the number of deaths by gender amongst the provinces"}
 gender <- gender_table %>% group_by(Sex,Province) %>% count(Sex,sort = TRUE) %>% head(25)
 ggplot(gender,aes(x = n, y = Province,fill = Sex)) + 
   geom_col() + 
@@ -100,7 +120,9 @@ ggplot(gender,aes(x = n, y = Province,fill = Sex)) +
   theme(legend.position = "none") 
 ```
 
-```{r age-plot,message=FALSE,warning=FALSE,echo=FALSE}
+The bar plot \@ref(fig:gender-plot) depicts the number of deaths between different provinces in Peru and this has been facet_wrap() by gender. As Lima is the largely populated province in the country of Peru, it has the highest number of cases/deaths recorded. As seen in the graph the number of deaths among males in Lima are higher than the number of deaths among the female gender. Another noticeable feature is that every province under consideration, the males are more prone to have been affected with the virus than the females. 
+
+```{r age-plot,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Number of deaths with repect to the age of the person"}
 Age <- gender_table %>% group_by(Sex,Age) %>% count(Age,sort = TRUE) 
 ggplot(Age,aes(x = Age, y = n,fill = Sex)) + 
   geom_col(binwidth = 10) + 
@@ -110,3 +132,12 @@ ggplot(Age,aes(x = Age, y = n,fill = Sex)) +
   theme(legend.position = "none") +
   xlim(0,50)
 ```
+
+Lastly, the plot \@ref(fig:age-plot) depicts the bar plot of number of deaths occurred within each age group from 1 to 50 facet_wrap() by gender. As seen in  \@ref(fig:gender-plot) the number of deaths among males are comparatively higher than the number of deaths in females. Within which the age group approaching 50 are the most affected age group in Peru, the same can be views among the female gender as well. It seems that children do get affected by the virus but the count is very low ~6 within our dataset.
+
+# References
+
+@data  - *Data source*
+@tidy
+@blog
+@gg
