@@ -14,6 +14,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```{r libraries,message=FALSE,warning=FALSE,echo=FALSE}
 library(tidyverse)
 library(lubridate)
+library(plotly)
 ```
 
 
@@ -37,7 +38,7 @@ write.csv(gender_table1,file = "C:/Users/varsh/Documents/semester2/CWD 5523/assi
 
 ```{r read-data,message=FALSE,warning=FALSE,echo=FALSE}
 peru_data <- read.csv("peru_covid.csv")
-peru_data$date <- lubridate::as_date(peru_data$date)
+peru_data$date <- as_date(peru_data$date)
 gender_table <- read.csv("state-details.csv")
 ```
 
@@ -47,24 +48,27 @@ gender_table <- read.csv("state-details.csv")
 
 ```{r plot-cases,message=FALSE,warning=FALSE}
 peru_data <- peru_data %>% mutate(month = month(date))
-ggplot(peru_data,aes(x = date),size = 1.0) + 
+p1 <- ggplot(peru_data,aes(x = date),size = 1.0) + 
   geom_line(aes(y = total_cases, color = "total_cases"),size = 1.0)+
   geom_line(aes(y = total_deaths,color = "total_deaths"),size = 1.0)+
   theme_minimal() +
   ylab("Total Cases") +
   xlab("Month")+
-  theme(legend.title = element_blank())+
+  theme(legend.title = element_blank(),axis.text.y = element_blank())+
   #scale_x_continuous(breaks = scales::pretty_breaks()) +
   labs(title="Count of Covid19 cases(total cases and Deaths)")
+ggplotly(p1)
 ```
 
 ```{r new-cases,warning=FALSE,message=FALSE}
-ggplot(peru_data,aes(x = date, y = new_cases)) +
+p2 <- ggplot(peru_data,aes(x = date, y = new_cases)) +
   geom_point(color = "#69b3a2") + 
   geom_smooth() +
   theme_minimal() +
+  theme(axis.text.y = element_blank())+
   ylab("New cases") +
   xlab("Month")
+ggplotly(p2)
 ```
 
 
