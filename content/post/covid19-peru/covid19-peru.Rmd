@@ -135,6 +135,10 @@ ggplot(Age,aes(x = Age, y = n,fill = Sex)) +
 
 Lastly, the plot \@ref(fig:age-plot) depicts the bar plot of number of deaths occurred within each age group from 1 to 50 facet_wrap() by gender. As seen in  \@ref(fig:gender-plot) the number of deaths among males are comparatively higher than the number of deaths in females. Within which the age group approaching 50 are the most affected age group in Peru, the same can be views among the female gender as well. It seems that children do get affected by the virus but the count is very low ~6 within our dataset.
 
+Stay safe everyone!
+
+![](https://media.giphy.com/media/QvMT31LoM66yQmuYbO/giphy.gif)
+
 # References
 
 @data  
@@ -142,3 +146,4 @@ Lastly, the plot \@ref(fig:age-plot) depicts the bar plot of number of deaths oc
 @tidy
 @blog
 @gg
+@masks
