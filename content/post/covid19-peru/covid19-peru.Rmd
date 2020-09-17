@@ -49,6 +49,7 @@ COVID-19 risk is really high in Peru. Its statistics ranks it to be the 5th most
 
 [More Information on COVID-19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses)
 
+## COVID-19 cases within the country
 
 ```{r plot-cases,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Count of Covid19 cases(total cases and Deaths)"}
 peru_data <- peru_data %>% mutate(month = month(date))
@@ -98,6 +99,8 @@ ggplotly(p2)
 
 The plot \@ref(fig:new-cases) shows a point graph with a line passing through it that helps see how the trends have been since the first record and then the different points indicate the dates on which the cases were recorded. As referred in the introduction, the first case recorded was on March 7th. The number of cases on a daily basis has been changing throughout, the first highest recorded cases was on 1st June with 8805 cases, and notably the very next day there was a huge drop in the cases equal to 0 which is very suspicious and this happens twice before the cases recorded has spiked to a high value of 10143 on 17th August and currently there has been a decrease in the cases all the way to 1598. 
 
+## COVID-19 case anlysis within each state & population
+
 ```{r high-province,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Highest cases amongst the provinces in Peru"}
 gender_table <- read.csv("state-details.csv")
 provinces <- gender_table %>% group_by(Province) %>% count(Province,sort = TRUE) %>% head()
@@ -105,7 +108,8 @@ ggplot(provinces,aes(x = n, y = Province,fill = Province)) +
   geom_col() + 
   xlab("Deaths") +
   theme_minimal() +
-  theme(legend.position= "none") 
+  theme(legend.position= "none") +
+  ggtitle("Cases within each state")
 ```
 
 The bar plot \@ref(fig:high-province) with the province names on the y-axis and the number of deaths on the x-axis, with the province `r filter(provinces,Province == "LIMA") %>% select(n)` number of deaths throughout the months followed by both `r filter(provinces,Province == "CALLAO") %>% select(n)` and `r filter(provinces,Province == "TRUJILLO") %>% select(n)` number of deaths in the entire country of Peru.
@@ -117,12 +121,13 @@ ggplot(gender,aes(x = n, y = Province,fill = Sex)) +
   facet_wrap(~Sex)  + 
   xlab("Deaths") +
   theme_minimal() +
-  theme(legend.position = "none") 
+  theme(legend.position = "none") +
+  ggtitle("Difference in counts of infected among genders")
 ```
 
 The bar plot \@ref(fig:gender-plot) depicts the number of deaths between different provinces in Peru and this has been facet_wrap() by gender. As Lima is the largely populated province in the country of Peru, it has the highest number of cases/deaths recorded. As seen in the graph the number of deaths among males in Lima are higher than the number of deaths among the female gender. Another noticeable feature is that every province under consideration, the males are more prone to have been affected with the virus than the females. 
 
-```{r age-plot,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Number of deaths with repect to the age of the person"}
+```{r age-plot,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Number of deaths with respect to the age of the person"}
 Age <- gender_table %>% group_by(Sex,Age) %>% count(Age,sort = TRUE) 
 ggplot(Age,aes(x = Age, y = n,fill = Sex)) + 
   geom_col(binwidth = 10) + 
@@ -130,7 +135,8 @@ ggplot(Age,aes(x = Age, y = n,fill = Sex)) +
   ylab("Deaths") +
   theme_minimal() +
   theme(legend.position = "none") +
-  xlim(0,50)
+  xlim(0,50) +
+  ggtitle("Difference in counts of infected among age groups")
 ```
 
 Lastly, the plot \@ref(fig:age-plot) depicts the bar plot of number of deaths occurred within each age group from 1 to 50 facet_wrap() by gender. As seen in  \@ref(fig:gender-plot) the number of deaths among males are comparatively higher than the number of deaths in females. Within which the age group approaching 50 are the most affected age group in Peru, the same can be views among the female gender as well. It seems that children do get affected by the virus but the count is very low ~6 within our dataset.
