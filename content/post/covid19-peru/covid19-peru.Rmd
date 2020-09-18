@@ -99,7 +99,7 @@ ggplotly(p2)
 
 The plot \@ref(fig:new-cases) shows a point graph with a line passing through it that helps see how the trends have been since the first record and then the different points indicate the dates on which the cases were recorded. As referred in the introduction, the first case recorded was on March 7th. The number of cases on a daily basis has been changing throughout, the first highest recorded cases was on 1st June with 8805 cases, and notably the very next day there was a huge drop in the cases equal to 0 which is very suspicious and this happens twice before the cases recorded has spiked to a high value of 10143 on 17th August and currently there has been a decrease in the cases all the way to 1598. 
 
-## COVID-19 case anlysis within each state & population
+## COVID-19 case anlysis within each state and it's population
 
 ```{r high-province,message=FALSE,warning=FALSE,echo=FALSE,fig.cap="Highest cases amongst the provinces in Peru"}
 gender_table <- read.csv("state-details.csv")
