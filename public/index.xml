@@ -557,7 +557,7 @@ ul{
   color: white;
 }
 
-.dark h1{
+h1{
   color: cyan;
 }
 
