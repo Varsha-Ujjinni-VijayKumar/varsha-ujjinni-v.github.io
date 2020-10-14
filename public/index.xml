@@ -549,12 +549,20 @@ p{
   color: white;
 }
 
+em{
+  color: white;
+}
+
+ul{
+  color: white;
+}
+
 .dark h1{
   color: purple;
 }
 
 .dark .article-metadata{
-  color: pink;
+  color: white;
 }
 
 .dark a{
