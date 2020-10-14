@@ -91,11 +91,11 @@ ul{
   color: cyan;
 }
 
-.dark .article-metadata{
+.article-metadata{
   color: cyan;
 }
 
-.dark a{
+a{
   color: cyan;
 }
 
@@ -114,7 +114,7 @@ article{
 #   color: cyan;
 # }
 
-.dark h3{
+h3{
   color: white;
 }
 ```
