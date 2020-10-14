@@ -1,0 +1,96 @@
+---
+title: "Self Assessment for COVID19 shiny App"
+author: "Varsha Ujjinni Vijay Kumar"
+date: 2015-07-23T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+### *Why Shiny?*
+
+**Shiny** helps us turn our analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge. Easy to the eyes, makes analyzed visualizations easier to understand and portray to the readers. This can be done using the packages shiny and shinydashboard in R.
+
+
+Link to the shiny app: [COVID19-dash](https://varsha-ujjinni-vijay-kumar.shinyapps.io/shiny-assessment-Varsha-Ujjinni-VijayKumar/)
+
+### *About the Shiny App?*
+
+The above shiny application is a dashboard for the Coronavirus 2019 pandemic throughout the top four countries that is affected by the infection, which are in order as follows :
+
+- **United States of America** with a total of *8,038,543* cases till date.
+
+- **India** with a total of *7,179,006* cases till date.
+
+- **Brazil** with a total of *5,103,408* cases till date.
+
+- **Russia** with a total of *1,326,178* cases till date. 
+
+This with the inclusion of all the cases of other countries bring the COVID19 cases to a total of 38,120,172 worldwide according to the [website](https://www.worldometers.info/coronavirus/).
+This application is an inspiration drawn from many a shiny dashboards found online, one of which is from [here](https://shiny.rstudio.com/gallery/covid19-tracker.html). The sole purpose of this shiny app is that it might help people who look at the analysis and visualization in understanding the various information related to the pandemic and contribute to the curbing of the virus. 
+There are many small details that the dashboard holds like how to wear a mask, which helps reduce the spread or what symptoms the citizens need to look out for. There are useful links that could help people find more information on the virus. There are 5 windows, out of which the second and the third page show the visualizations of how the spread of the virus is within these 4 countries.
+
+### *What was done well?*
+
+In my opinion,
+
+- The formatting of the application is very easy on the eyes, the theme used, the flow of the pages is easy to navigate and justifying of the paragraphs. 
+
+- The second page is that of leaflet clicks for the change in line plot, which shows the how the virus has changed throughout the period of time for each of the states clicked on the map plot, for each of the four countries. 
+
+- The third page includes a plotly click for the plotly graph, which shows the total number of cases throughout the four countries, which upon clicking on the specific country gives a DT table with that selected country's dataset.
+
+### *Improvements:*
+
+- I would like to improve on the line graph which shows the number of cases, deaths or the recovered over time. 
+
+- I could make it to show the information a little better with good titles, geom_texts to the graph, include some markers for the leaflet maps. 
+
+- I would like to change the DT table to show other details related to the country rather than its own dataset.
+
+### *Any Additions?*
+
+- Like I said before too, I would like to add more columns which adds more value to the DT table for the respective click on the plotly plot, I could not think of anything I could add right then but after giving it a lot of thought I think it would be good to add a *cases:population ratio* for every country during that day.
+
+- A plot for how the stringency index increased or decreased over time within each country.
+
+- I could have added more features into the application, like a sentiment analysis with each of the countries.
+
+### *Any Addition that cannot be done yet due to limitation in data or technology?*
+
+- When I took the dataset from the referenced kaggle websites in the shiny application, these datasets did not contain the latitudes and longitudes for each state within each country, which is why I have added the (lat,long) columns into the datasets by making a separate excel sheets and left joined them to obtain the current result.
+
+- If the datasets had a column with the most important dates' description, I could have added date specific points on the line graph.
+
+
+### References
+
+(2020). Retrieved 14 October 2020, from https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg
+
+```{css echo= FALSE}
+body{
+  text-align: justify;
+}
+
+.dark h1{
+  color: purple;
+}
+
+.dark .article-metadata{
+  color: pink;
+}
+
+.dark a{
+  color: pink;
+}
+article{
+  background-image: url("https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg");
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-position: center;
+}
+```
+

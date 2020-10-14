@@ -1,0 +1,87 @@
+---
+title: "Self Assessment for COVID19 shiny App"
+author: "Varsha Ujjinni Vijay Kumar"
+date: 2015-07-23T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+
+
+<div id="why-shiny" class="section level3">
+<h3><em>Why Shiny?</em></h3>
+<p><strong>Shiny</strong> helps us turn our analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge. Easy to the eyes, makes analyzed visualizations easier to understand and portray to the readers. This can be done using the packages shiny and shinydashboard in R.</p>
+<p>Link to the shiny app: <a href="https://varsha-ujjinni-vijay-kumar.shinyapps.io/shiny-assessment-Varsha-Ujjinni-VijayKumar/">COVID19-dash</a></p>
+</div>
+<div id="about-the-shiny-app" class="section level3">
+<h3><em>About the Shiny App?</em></h3>
+<p>The above shiny application is a dashboard for the Coronavirus 2019 pandemic throughout the top four countries that is affected by the infection, which are in order as follows :</p>
+<ul>
+<li><p><strong>United States of America</strong> with a total of <em>8,038,543</em> cases till date.</p></li>
+<li><p><strong>India</strong> with a total of <em>7,179,006</em> cases till date.</p></li>
+<li><p><strong>Brazil</strong> with a total of <em>5,103,408</em> cases till date.</p></li>
+<li><p><strong>Russia</strong> with a total of <em>1,326,178</em> cases till date.</p></li>
+</ul>
+<p>This with the inclusion of all the cases of other countries bring the COVID19 cases to a total of 38,120,172 worldwide according to the <a href="https://www.worldometers.info/coronavirus/">website</a>.
+This application is an inspiration drawn from many a shiny dashboards found online, one of which is from <a href="https://shiny.rstudio.com/gallery/covid19-tracker.html">here</a>. The sole purpose of this shiny app is that it might help people who look at the analysis and visualization in understanding the various information related to the pandemic and contribute to the curbing of the virus.
+There are many small details that the dashboard holds like how to wear a mask, which helps reduce the spread or what symptoms the citizens need to look out for. There are useful links that could help people find more information on the virus. There are 5 windows, out of which the second and the third page show the visualizations of how the spread of the virus is within these 4 countries.</p>
+</div>
+<div id="what-was-done-well" class="section level3">
+<h3><em>What was done well?</em></h3>
+<p>In my opinion,</p>
+<ul>
+<li><p>The formatting of the application is very easy on the eyes, the theme used, the flow of the pages is easy to navigate and justifying of the paragraphs.</p></li>
+<li><p>The second page is that of leaflet clicks for the change in line plot, which shows the how the virus has changed throughout the period of time for each of the states clicked on the map plot, for each of the four countries.</p></li>
+<li><p>The third page includes a plotly click for the plotly graph, which shows the total number of cases throughout the four countries, which upon clicking on the specific country gives a DT table with that selected country’s dataset.</p></li>
+</ul>
+</div>
+<div id="improvements" class="section level3">
+<h3><em>Improvements:</em></h3>
+<ul>
+<li><p>I would like to improve on the line graph which shows the number of cases, deaths or the recovered over time.</p></li>
+<li><p>I could make it to show the information a little better with good titles, geom_texts to the graph, include some markers for the leaflet maps.</p></li>
+<li><p>I would like to change the DT table to show other details related to the country rather than its own dataset.</p></li>
+</ul>
+</div>
+<div id="any-additions" class="section level3">
+<h3><em>Any Additions?</em></h3>
+<ul>
+<li><p>Like I said before too, I would like to add more columns which adds more value to the DT table for the respective click on the plotly plot, I could not think of anything I could add right then but after giving it a lot of thought I think it would be good to add a <em>cases:population ratio</em> for every country during that day.</p></li>
+<li><p>A plot for how the stringency index increased or decreased over time within each country.</p></li>
+<li><p>I could have added more features into the application, like a sentiment analysis with each of the countries.</p></li>
+</ul>
+</div>
+<div id="any-addition-that-cannot-be-done-yet-due-to-limitation-in-data-or-technology" class="section level3">
+<h3><em>Any Addition that cannot be done yet due to limitation in data or technology?</em></h3>
+<ul>
+<li><p>When I took the dataset from the referenced kaggle websites in the shiny application, these datasets did not contain the latitudes and longitudes for each state within each country, which is why I have added the (lat,long) columns into the datasets by making a separate excel sheets and left joined them to obtain the current result.</p></li>
+<li><p>If the datasets had a column with the most important dates’ description, I could have added date specific points on the line graph.</p></li>
+</ul>
+</div>
+<div id="references" class="section level3">
+<h3>References</h3>
+<p>(2020). Retrieved 14 October 2020, from <a href="https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg" class="uri">https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg</a></p>
+<style type="text/css">
+body{
+  text-align: justify;
+}
+
+.dark h1{
+  color: purple;
+}
+
+.dark .article-metadata{
+  color: pink;
+}
+
+.dark a{
+  color: pink;
+}
+article{
+  background-image: url("https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg");
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-position: center;
+}
+</style>
+</div>
