@@ -558,24 +558,33 @@ ul{
 }
 
 .dark h1{
-  color: purple;
+  color: cyan;
 }
 
 .dark .article-metadata{
-  color: white;
+  color: cyan;
 }
 
 .dark a{
-  color: pink;
+  color: cyan;
 }
+
 article{
-  background-image: url(&#34;https://i.pinimg.com/564x/a6/f3/d0/a6f3d0bf4e37d3c29ae2c9d3ac1a3b4b.jpg&#34;);
+  background-image: url(&#34;https://i.pinimg.com/564x/c1/d0/f7/c1d0f79277d914f24d18cd0f1fe0b45a.jpg&#34;);
   background-repeat: no-repeat;
   background-size: 80% 100%;
   background-position: center;
 }
 
-.content-widget-hr{
+# .author-card .card-text{
+#   color: cyan;
+# }
+# 
+# .author-card .card-title a{
+#   color: cyan;
+# }
+
+.dark h3{
   color: white;
 }
 &lt;/style&gt;
