@@ -1,5 +1,5 @@
 ---
-title: "R package review `r emo::ji("package")`"
+title: "R package review"
 author: "Varsha Ujjinni Vijay Kumar"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
@@ -56,5 +56,9 @@ A Glimpse of the dashboard
 
 ![](img/dash.png)
 
+### References
+
+  Hadley Wickham, Romain François and Lucy D'Agostino McGowan (2020). emo: Easily Insert 'Emoji'. R package version 0.0.0.9000.
+  https://github.com/hadley/emo
 
 
