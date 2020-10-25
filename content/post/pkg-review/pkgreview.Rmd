@@ -1,5 +1,5 @@
 ---
-title: R package review `r emo::ji("package")`
+title: "R package review `r emo::ji("package")`"
 author: "Varsha Ujjinni Vijay Kumar"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
