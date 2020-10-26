@@ -10,6 +10,7 @@ tags: ["R Markdown", "plot", "regression"]
 knitr::opts_chunk$set(collapse = TRUE)
 ```
 
+
 ## Overview `r emo::ji("movie_camera")`
 
 In this blog post, I will be reviewing an R package (How fun is that?), called `covid19ViewerShiny`, authored by [**Yuheng Cui**](https://github.com/ycui0008), containing different functions, a dataset and a shiny application which depicts the [COVID19](https://covid19.who.int/) pandemic which is currently running rampant throughout the world.
@@ -94,6 +95,7 @@ The package includes all the following forms of documentation:
 
   Hadley Wickham, Romain François and Lucy D'Agostino McGowan (2020). emo: Easily Insert 'Emoji'. R package version 0.0.0.9000.
   https://github.com/hadley/emo
+
 
 
 ```{css echo= FALSE}
