@@ -50,27 +50,40 @@ Lastly, the documentation, I was able to navigate myself through this R package 
 
 ## Takeaways `r emo::ji("open_book")`
 
-Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of other people. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots(the train of thought, **All Aboard!**). 
+Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of peers. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots. Peer suggestions help develop us into better programmers and help us get better ideas of making any project be seen in a different light. Reviewing this package helped me see the different things I could've added into my own work, to make it be better.
 
-Checklist:
+## Appendix:
 
-### Package review
+*As a peer of the author of the reviewed package, `Yuheng Cui`, it was a pleasure reviewing his work in creating an R package.*
 
-- [ $\checkmark$ ] **Installation instructions:** for the package is found in README
-- [ $\checkmark$ ] **Vignette(s)** demonstrating major functionality that runs successfully locally
-- [ $\checkmark$ ] **Function Documentation:** for all exported functions in R help
-- [ $\checkmark$ ] **Examples** for all exported functions in R Help that run successfully locally
+The gist of the review is as follows:
+
+#### Documentation
+
+The package includes all the following forms of documentation:
+
+- [x] **Repository has a folder** called `inst/app/` that contains the relevant R code to run the shiny application.
+- [x] **There is an exported function** called `launch_app()` that will find and load the shiny application from `inst/app`.
+- [x] **Refactor at least one part of the user interface-side logic** of your app into R functions that are exported by your R package.
+- [x] **Refactor at least one part of the server-side logic** of your app into R functions that are exported by your R package.
+- [ ] **At least one unit test** for the functions you created to simplify the user interface and server of your app.
+- [x] **All functions in the package are documented** with roxygen2 according to guidelines given in lectures.
+- [x] **The DESCRIPTION file includes** an informative name and title for your package, as well as a valid author, field and dependencies. There should also be a valid LICENCE file.
+- [x] **A vignette** that describes how to launch the app, what the app does, and guidelines for its use.
+- [x] **There is a README.md** file that has clear instructions on how to install the package from GitHub, and gives a big picture overview of the package.
+- [x] **There is a pkgdown site** that contains the documentation for your package.
+- [x] The pkgdown site has **customized at least one element** of the _pkgdown.yaml file.
+- [x] The pkgdown site is **available publicly via deployment from Github Actions**.
+
+
 #### Functionality
-- [$\checkmark$  ] **Installation:** Installation succeeds as documented.
-- [ $\checkmark$ ] **Functionality:** Any functional claims of the software been confirmed.
+
+- [x] **Installation:** Installation succeeds as documented.
+- [x] **Functionality:** Any functional claims of the software been confirmed.
+- [x] **R CMD CHECK** passes without errors or warnings.
 - [ ] **Automated tests:** Unit tests cover essential functions of the package
-and a reasonable range of inputs and conditions. All tests pass on the local machine.
+   and a reasonable range of inputs and conditions. All tests pass on the local machine.
 
-
-
-A Glimpse of the dashboard
-
-![](img/dash.png)
 
 ### References
 
@@ -78,3 +91,8 @@ A Glimpse of the dashboard
   https://github.com/hadley/emo
 
 
+```{css echo= FALSE}
+body{
+  text-align: justify;
+}
+```
