@@ -12,7 +12,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 
 ## Overview `r emo::ji("movie_camera")`
 
-In this blog post, I will be reviewing an R package (How fun is that?), this package named `covid19ViewerShiny` is authored by [**Yuheng Cui**](https://github.com/ycui0008), containing different functions, a dataset and a shiny application which depicts the [COVID19](https://covid19.who.int/) pandemic which is currently running rampant throughout the world.
+In this blog post, I will be reviewing an R package (How fun is that?), called `covid19ViewerShiny`, authored by [**Yuheng Cui**](https://github.com/ycui0008), containing different functions, a dataset and a shiny application which depicts the [COVID19](https://covid19.who.int/) pandemic which is currently running rampant throughout the world.
 
 The development version of the package can be found in [GITHUB](https://github.com/etc5523-2020/r-package-assessment-ycui0008).
 
@@ -38,7 +38,7 @@ The application provides a slider input for the dates reflecting the cases based
 
 I would like to start off by saying the package itself as a whole is structured , accomplishes what is expected of it without any errors. Although I did notice that the test for server function `colPlot()` was not done, tests are very important when making a package, it gives a clear understanding to the developer whether the functions made are effective and working well for any type of input values. 
 
-Coming to the shiny app, I really appreciate the efforts the author has taken to make this user effective, interactive app. One thing within the codes of the app is the use of HTML tag `<p>`, I would like to add that the author does not have to write <p> tag for every line, as the <p> tag does tell us it is a paragraph. 
+Coming to the shiny app, I really appreciate the efforts the author has taken to make this user effective, interactive app. One thing within the codes of the app is the use of HTML tag `<p>`, I would like to add that the author does not have to write `<p>` tag for every line, as the `<p>` tag does tell us it is a paragraph. 
 
 Lastly, the documentation, I was able to navigate myself through this R package thanks to the documentation made. There were three points that I would like to convey:
 
@@ -50,9 +50,9 @@ Lastly, the documentation, I was able to navigate myself through this R package 
 
 ## Takeaways `r emo::ji("open_book")`
 
-Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of peers. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots. Peer suggestions help develop us into better programmers and help us get better ideas of making any project be seen in a different light. Reviewing this package helped me see the different things I could've added into my own work, to make it be better.
+Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of peers. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots. Peer suggestions help develop us into better programmers and help us get better ideas of making any project be seen in a different light. Reviewing this package helped me see the different things I could have added into my own work, to make it be better.
 
-## Appendix:
+## Appendix
 
 *As a peer of the author of the reviewed package, `Yuheng Cui`, it was a pleasure reviewing his work in creating an R package.*
 
@@ -62,18 +62,18 @@ The gist of the review is as follows:
 
 The package includes all the following forms of documentation:
 
-- [x] **Repository has a folder** called `inst/app/` that contains the relevant R code to run the shiny application.
-- [x] **There is an exported function** called `launch_app()` that will find and load the shiny application from `inst/app`.
-- [x] **Refactor at least one part of the user interface-side logic** of your app into R functions that are exported by your R package.
-- [x] **Refactor at least one part of the server-side logic** of your app into R functions that are exported by your R package.
-- [ ] **At least one unit test** for the functions you created to simplify the user interface and server of your app.
-- [x] **All functions in the package are documented** with roxygen2 according to guidelines given in lectures.
-- [x] **The DESCRIPTION file includes** an informative name and title for your package, as well as a valid author, field and dependencies. There should also be a valid LICENCE file.
-- [x] **A vignette** that describes how to launch the app, what the app does, and guidelines for its use.
-- [x] **There is a README.md** file that has clear instructions on how to install the package from GitHub, and gives a big picture overview of the package.
-- [x] **There is a pkgdown site** that contains the documentation for your package.
-- [x] The pkgdown site has **customized at least one element** of the _pkgdown.yaml file.
-- [x] The pkgdown site is **available publicly via deployment from Github Actions**.
+- [x] Repository has a folder called `inst/app/` that contains the relevant R code to run the shiny application.
+- [x] There is an exported function called `launch_app()` that will find and load the shiny application from `inst/app`.
+- [x] Refactor at least one part of the user interface-side logic of your app into R functions that are exported by your R package.
+- [x] Refactor at least one part of the server-side logic of your app into R functions that are exported by your R package.
+- [ ] At least one unit test for the functions you created to simplify the user interface and server of your app.
+- [x] All functions in the package are documented with roxygen2 according to guidelines given in lectures.
+- [x] The DESCRIPTION file includes an informative name and title for your package, as well as a valid author, field and dependencies. There should also be a valid LICENCE file.
+- [x] A vignette that describes how to launch the app, what the app does, and guidelines for its use.
+- [x] There is a README.md file that has clear instructions on how to install the package from GitHub, and gives a big picture overview of the package.
+- [x] There is a pkgdown site that contains the documentation for your package.
+- [x] The pkgdown site has customized at least one element of the _pkgdown.yaml file.
+- [x] The pkgdown site is available publicly via deployment from Github Actions.
 
 
 #### Functionality
@@ -84,6 +84,7 @@ The package includes all the following forms of documentation:
 - [ ] **Automated tests:** Unit tests cover essential functions of the package
    and a reasonable range of inputs and conditions. All tests pass on the local machine.
 
+#### 
 
 ### References
 

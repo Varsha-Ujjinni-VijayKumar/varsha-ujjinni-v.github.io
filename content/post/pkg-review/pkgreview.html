@@ -12,7 +12,7 @@ tags: ["R Markdown", "plot", "regression"]
 
 <div id="overview" class="section level2">
 <h2>Overview 🎥</h2>
-<p>In this blog post, I will be reviewing an R package (How fun is that?), this package named <code>covid19ViewerShiny</code> is authored by <a href="https://github.com/ycui0008"><strong>Yuheng Cui</strong></a>, containing different functions, a dataset and a shiny application which depicts the <a href="https://covid19.who.int/">COVID19</a> pandemic which is currently running rampant throughout the world.</p>
+<p>In this blog post, I will be reviewing an R package (How fun is that?), called <code>covid19ViewerShiny</code>, authored by <a href="https://github.com/ycui0008"><strong>Yuheng Cui</strong></a>, containing different functions, a dataset and a shiny application which depicts the <a href="https://covid19.who.int/">COVID19</a> pandemic which is currently running rampant throughout the world.</p>
 <p>The development version of the package can be found in <a href="https://github.com/etc5523-2020/r-package-assessment-ycui0008">GITHUB</a>.</p>
 <p>The main goal of covid19ViewerShiny package is to a compact and consolidated way for users to visualize and understand the baneful effects of the pandemic. This package has a shiny dashboard that visualizes the condition of the pandemic in all countries of the world. It contains three functions:</p>
 <ul>
@@ -31,11 +31,7 @@ tags: ["R Markdown", "plot", "regression"]
 <div id="improvements-on-the-package-shiny-app-or-the-documetation" class="section level2">
 <h2>Improvements on the package, shiny app or the documetation? 📝</h2>
 <p>I would like to start off by saying the package itself as a whole is structured , accomplishes what is expected of it without any errors. Although I did notice that the test for server function <code>colPlot()</code> was not done, tests are very important when making a package, it gives a clear understanding to the developer whether the functions made are effective and working well for any type of input values.</p>
-Coming to the shiny app, I really appreciate the efforts the author has taken to make this user effective, interactive app. One thing within the codes of the app is the use of HTML tag <code>&lt;p&gt;</code>, I would like to add that the author does not have to write
-<p>
-tag for every line, as the
-<p>
-<p>tag does tell us it is a paragraph.</p>
+<p>Coming to the shiny app, I really appreciate the efforts the author has taken to make this user effective, interactive app. One thing within the codes of the app is the use of HTML tag <code>&lt;p&gt;</code>, I would like to add that the author does not have to write <code>&lt;p&gt;</code> tag for every line, as the <code>&lt;p&gt;</code> tag does tell us it is a paragraph.</p>
 <p>Lastly, the documentation, I was able to navigate myself through this R package thanks to the documentation made. There were three points that I would like to convey:</p>
 <ul>
 <li><p>I found it to be very difficult for understanding how to give the arguments for the function, <code>colPlot()</code>, the function failed for me outside the app and I did try to find out different ways I could use it but in vain , would really appreciate it if that was given more clearly.</p></li>
@@ -45,10 +41,10 @@ tag for every line, as the
 </div>
 <div id="takeaways" class="section level2">
 <h2>Takeaways 📖</h2>
-<p>Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of peers. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots. Peer suggestions help develop us into better programmers and help us get better ideas of making any project be seen in a different light. Reviewing this package helped me see the different things I could’ve added into my own work, to make it be better.</p>
+<p>Other than being amazed by the amount of work put into the package, it is always a learning step when looking into the codes and ideas of peers. Easier way of implementing any code you thought otherwise, so it is always a pleasure to look at the codes which create such fantastic plots. Peer suggestions help develop us into better programmers and help us get better ideas of making any project be seen in a different light. Reviewing this package helped me see the different things I could have added into my own work, to make it be better.</p>
 </div>
 <div id="appendix" class="section level2">
-<h2>Appendix:</h2>
+<h2>Appendix</h2>
 <p><em>As a peer of the author of the reviewed package, <code>Yuheng Cui</code>, it was a pleasure reviewing his work in creating an R package.</em></p>
 <p>The gist of the review is as follows:</p>
 <div id="documentation" class="section level4">
@@ -56,29 +52,29 @@ tag for every line, as the
 <p>The package includes all the following forms of documentation:</p>
 <ul>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>Repository has a folder</strong> called <code>inst/app/</code> that contains the relevant R code to run the shiny application.</li>
+Repository has a folder called <code>inst/app/</code> that contains the relevant R code to run the shiny application.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>There is an exported function</strong> called <code>launch_app()</code> that will find and load the shiny application from <code>inst/app</code>.</li>
+There is an exported function called <code>launch_app()</code> that will find and load the shiny application from <code>inst/app</code>.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>Refactor at least one part of the user interface-side logic</strong> of your app into R functions that are exported by your R package.</li>
+Refactor at least one part of the user interface-side logic of your app into R functions that are exported by your R package.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>Refactor at least one part of the server-side logic</strong> of your app into R functions that are exported by your R package.</li>
+Refactor at least one part of the server-side logic of your app into R functions that are exported by your R package.</li>
 <li><input type="checkbox" disabled="" />
-<strong>At least one unit test</strong> for the functions you created to simplify the user interface and server of your app.</li>
+At least one unit test for the functions you created to simplify the user interface and server of your app.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>All functions in the package are documented</strong> with roxygen2 according to guidelines given in lectures.</li>
+All functions in the package are documented with roxygen2 according to guidelines given in lectures.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>The DESCRIPTION file includes</strong> an informative name and title for your package, as well as a valid author, field and dependencies. There should also be a valid LICENCE file.</li>
+The DESCRIPTION file includes an informative name and title for your package, as well as a valid author, field and dependencies. There should also be a valid LICENCE file.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>A vignette</strong> that describes how to launch the app, what the app does, and guidelines for its use.</li>
+A vignette that describes how to launch the app, what the app does, and guidelines for its use.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>There is a README.md</strong> file that has clear instructions on how to install the package from GitHub, and gives a big picture overview of the package.</li>
+There is a README.md file that has clear instructions on how to install the package from GitHub, and gives a big picture overview of the package.</li>
 <li><input type="checkbox" disabled="" checked="" />
-<strong>There is a pkgdown site</strong> that contains the documentation for your package.</li>
+There is a pkgdown site that contains the documentation for your package.</li>
 <li><input type="checkbox" disabled="" checked="" />
-The pkgdown site has <strong>customized at least one element</strong> of the _pkgdown.yaml file.</li>
+The pkgdown site has customized at least one element of the _pkgdown.yaml file.</li>
 <li><input type="checkbox" disabled="" checked="" />
-The pkgdown site is <strong>available publicly via deployment from Github Actions</strong>.</li>
+The pkgdown site is available publicly via deployment from Github Actions.</li>
 </ul>
 </div>
 <div id="functionality" class="section level4">
@@ -94,6 +90,9 @@ The pkgdown site is <strong>available publicly via deployment from Github Action
 <strong>Automated tests:</strong> Unit tests cover essential functions of the package
 and a reasonable range of inputs and conditions. All tests pass on the local machine.</li>
 </ul>
+</div>
+<div id="section" class="section level4">
+<h4></h4>
 </div>
 <div id="references" class="section level3">
 <h3>References</h3>
